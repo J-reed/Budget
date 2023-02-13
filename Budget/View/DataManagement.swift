@@ -5,25 +5,27 @@
 //  Created by Justin Reed on 13/02/2023.
 //
 
+
+//TODO
+// Navigation View
+
 import SwiftUI
 
-struct Home: View {
+struct DataManagement: View {
     
     @State var windowWidth: CGFloat
     @State var windowHeight: CGFloat
     @State var ButtonsText: [String]
     @State var currentTab: String
 
-
-    
     @Namespace var animation
-    
     
     var tabWindowProportion = 0.11
     var selectedTabCapsuleWidth = 2.0
     var tabItemDistributionFactor = 10.0
     var capsuleHeightMultipler = 2.0
     
+    // Extract to another file
     struct File: Identifiable {
         let filePath: String
         let fileName: String
@@ -109,7 +111,7 @@ struct Home: View {
         .background(Color("BG").ignoresSafeArea())
         
         //Apply button style to whole view
-        .buttonStyle(BorderlessButtonStyle())
+        //.buttonStyle(BorderlessButtonStyle())
     }
     
     @ViewBuilder
@@ -145,6 +147,8 @@ struct Home: View {
         
     }
   
+    // Eventually replace these with Core Data
+    
     // Returns the list of files
     func getFiles() -> [File] {
         let files = [
@@ -160,7 +164,8 @@ struct Home: View {
         let accounts = [
             Account(accountName: "A1"),
             Account(accountName: "A2"),
-            Account(accountName: "A3")
+            Account(accountName: "A3"),
+            Account(accountName: "A4")
         ]
         
         return accounts

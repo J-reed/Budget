@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0CDD4DB299AE72E006F9F70 /* Budget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0CDD4D8299AE72E006F9F70 /* Budget.xcdatamodeld */; };
+		D0CDD4DC299AE72E006F9F70 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CDD4DA299AE72E006F9F70 /* Persistence.swift */; };
 		D0F5F067299A2C5A00D01E65 /* BudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5F066299A2C5A00D01E65 /* BudgetApp.swift */; };
 		D0F5F069299A2C5A00D01E65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5F068299A2C5A00D01E65 /* ContentView.swift */; };
 		D0F5F06B299A2C5C00D01E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0F5F06A299A2C5C00D01E65 /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0CDD4D9299AE72E006F9F70 /* Budget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Budget.xcdatamodel; sourceTree = "<group>"; };
+		D0CDD4DA299AE72E006F9F70 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D0F5F063299A2C5A00D01E65 /* Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F5F066299A2C5A00D01E65 /* BudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetApp.swift; sourceTree = "<group>"; };
 		D0F5F068299A2C5A00D01E65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +58,8 @@
 		D0F5F065299A2C5A00D01E65 /* Budget */ = {
 			isa = PBXGroup;
 			children = (
+				D0CDD4D8299AE72E006F9F70 /* Budget.xcdatamodeld */,
+				D0CDD4DA299AE72E006F9F70 /* Persistence.swift */,
 				D0F5F076299A307A00D01E65 /* Model */,
 				D0F5F075299A306500D01E65 /* View */,
 				D0F5F066299A2C5A00D01E65 /* BudgetApp.swift */,
@@ -160,7 +166,9 @@
 			files = (
 				D0F5F069299A2C5A00D01E65 /* ContentView.swift in Sources */,
 				D0F5F078299A309C00D01E65 /* DataManagement.swift in Sources */,
+				D0CDD4DB299AE72E006F9F70 /* Budget.xcdatamodeld in Sources */,
 				D0F5F067299A2C5A00D01E65 /* BudgetApp.swift in Sources */,
+				D0CDD4DC299AE72E006F9F70 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +384,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D0CDD4D8299AE72E006F9F70 /* Budget.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D0CDD4D9299AE72E006F9F70 /* Budget.xcdatamodel */,
+			);
+			currentVersion = D0CDD4D9299AE72E006F9F70 /* Budget.xcdatamodel */;
+			path = Budget.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D0F5F05B299A2C5A00D01E65 /* Project object */;
 }

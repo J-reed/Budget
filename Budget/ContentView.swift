@@ -12,7 +12,7 @@ struct ContentView: View {
     var buttonsText = ["Data \nManagement", "Summary", "Data \nSource \nGroups", "Group \nSummary", "Saved Views"]
     
     var body: some View {
-        Home(windowWidth: getRect().width/1.75, windowHeight: getRect().height - 130, ButtonsText:buttonsText, currentTab: buttonsText[0])
+        DataManagement(windowWidth: getRect().width/1.75, windowHeight: getRect().height - 130, ButtonsText:buttonsText, currentTab: buttonsText[0])
     }
 }
 
