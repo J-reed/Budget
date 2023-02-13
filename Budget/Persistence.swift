@@ -13,10 +13,24 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+        
+        for i in 0..<10 {
+            
+            // Files
+            let f = File(context: viewContext)
+            f.filePath = "P\(i)"
+            f.fileName = "F\(i)"
+            f.id = UUID()
         }
+        
+        for i in 0..<3 {
+            // Accounts
+            let a = Account(context: viewContext)
+            a.accountName = "A\(i)"
+            a.id = UUID()
+        }
+        
+        
         do {
             try viewContext.save()
         } catch {
