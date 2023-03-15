@@ -18,5 +18,9 @@ public class File: NSManagedObject, Identifiable {
     @NSManaged public var fileName: String
     @NSManaged public var filePath: String
     @NSManaged public var id: UUID
-
+    
+    @NSManaged private var transactions: NSMutableSet
+    func appendTranactions(newTransactions: [Transaction]){
+        transactions.addObjects(from: newTransactions)
+    }
 }

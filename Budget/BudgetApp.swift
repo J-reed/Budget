@@ -36,7 +36,8 @@ struct BudgetApp: App {
                     NavigationLink("Saved Views", tag: 4, selection: $selectedIndex){
                         Text("Saved Views")
                     }
-                }.ignoresSafeArea()
+                }
+                .ignoresSafeArea()
             }
             
             

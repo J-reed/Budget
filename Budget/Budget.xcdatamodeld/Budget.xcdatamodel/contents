@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21G320" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Account" representedClassName="Account" syncable="YES">
         <attribute name="accountName" attributeType="String" defaultValueString=""/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="associatedTransactions" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="associatedAccount" inverseEntity="Transaction"/>
     </entity>
-    <entity name="AccountHolder" representedClassName="AccountHolder" syncable="YES" codeGenerationType="class">
+    <entity name="AccountHolder" representedClassName="AccountHolder" syncable="YES">
         <attribute name="accountHolderName" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="transactions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transaction" inverseName="transactionAccountHolder" inverseEntity="Transaction"/>
@@ -17,16 +18,19 @@
     <entity name="File" representedClassName="File" syncable="YES">
         <attribute name="fileName" attributeType="String" defaultValueString=""/>
         <attribute name="filePath" attributeType="String" defaultValueString=""/>
-        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="fromFile" inverseEntity="Transaction"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="transactions" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="fromFile" inverseEntity="Transaction"/>
     </entity>
-    <entity name="Transaction" representedClassName="Transaction" syncable="YES" codeGenerationType="class">
-        <attribute name="balance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    <entity name="Transaction" representedClassName="Transaction" syncable="YES">
+        <attribute name="balance" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="dayTransactionNumber" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dayTransactionNumber" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="paidIn" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="paidOut" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="paidIn" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="paidOut" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="transactionDescription" attributeType="String"/>
         <attribute name="transactionType" attributeType="String"/>
+        <relationship name="associatedAccount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="associatedTransactions" inverseEntity="Account"/>
         <relationship name="fromFile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="File" inverseName="transactions" inverseEntity="File"/>
         <relationship name="transactionAccountHolder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountHolder" inverseName="transactions" inverseEntity="AccountHolder"/>
     </entity>

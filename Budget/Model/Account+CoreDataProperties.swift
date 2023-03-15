@@ -19,6 +19,22 @@ public class Account: NSManagedObject, Identifiable{
     @NSManaged public var accountName: String
     @NSManaged public var id: UUID
     
+    @NSManaged private var associatedTransactions: NSMutableSet
+    var transactions: [Transaction] {
+        get {
+            return associatedTransactions.compactMap({ $0 as? Transaction})
+        }
+        set {
+            associatedTransactions.removeAllObjects()
+            associatedTransactions.addObjects(from: newValue)
+        }
+    }
+    
+    func appendTranactions(transactions: [Transaction]){
+        associatedTransactions.addObjects(from: transactions)
+    }
+    
+    
 }
 
 

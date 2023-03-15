@@ -10,25 +10,14 @@ import CoreData
 struct PersistenceController {
     static let shared = PersistenceController()
 
+    
+    
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
-        for i in 0..<10 {
-            
-            // Files
-            let f = File(context: viewContext)
-            f.filePath = "P\(i)"
-            f.fileName = "F\(i)"
-            f.id = UUID()
-        }
-        
-        for i in 0..<3 {
-            // Accounts
-            let a = Account(context: viewContext)
-            a.accountName = "A\(i)"
-            a.id = UUID()
-        }
+       
+    
         
         
         do {
