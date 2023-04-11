@@ -33,12 +33,10 @@ struct DataManagement: View {
     
     
     var body: some View {
-        
-        let accountArr = accounts.map({ account in
-            account.accountName})
-        let colours = dictionaryComprehension(array: accountArr) { (element) -> (key: String, value: Color)? in
-                return (key: element, value: getRandomColour())
-            }
+ 
+        let colours = accounts.reduce(into: Dictionary<String, Color>()){
+            $0[$1.accountName] = getRandomColour()
+        }
         
         HStack(spacing: 0){
             
@@ -78,28 +76,20 @@ struct DataManagement: View {
                             }
 
                         }.frame(maxWidth: .infinity)
+                        
                         Table(files){
                             TableColumn("File Name",value: \.fileName)
                             TableColumn("File Path",value: \.filePath)
                         }.frame(maxHeight: windowHeight/5)
+                        
                         HStack(alignment: .center,spacing: 10){
-                            
-                            ForEach(accounts, id:
-                                        \.self){
-                                account in
+                            ForEach(accounts, id: \.self){ account in
                                 Toggle(account.accountName, isOn: .constant(true))
                                     .toggleStyle(.checkbox).foregroundStyle(colours[account.accountName]!)
-                                
                             }
-                            
-                            
-                            
                         }.frame(maxWidth: .infinity, alignment: .center)
                         
-                        
                         Chart() {
-                            
-                        
                             ForEach(transactions){ transaction in
                                 
                                     PointMark(
@@ -119,11 +109,7 @@ struct DataManagement: View {
                         }
                         
                         Spacer()
-                        Spacer()
-                       
                     }
-                    Spacer()
-                    Spacer()
                     Spacer()
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }.frame(alignment: .center)
@@ -158,13 +144,4 @@ func getRandomColour() -> Color{
         blue: .random(in: 0...1))
 }
 
-// Code from https://stackoverflow.com/questions/32022162/swift-dictionary-comprehension
-func dictionaryComprehension<T,K,V>(array: [T], map: (T) -> (key: K, value: V)?) -> [K: V] {
-    var dict = [K: V]()
-    for element in array {
-        if let (key, value) = map(element) {
-            dict[key] = value
-        }
-    }
-    return dict
-}
+

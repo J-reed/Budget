@@ -28,7 +28,8 @@ struct BudgetApp: App {
                         Text("Summary")
                     }
                     NavigationLink("Data Source Groups", tag: 2, selection: $selectedIndex){
-                        Text("Data Source Groups")
+                        GroupManagement()
+                            .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     }
                     NavigationLink("Group Summary", tag: 3, selection: $selectedIndex){
                         Text("Group Summary")

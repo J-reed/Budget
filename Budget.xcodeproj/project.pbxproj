@@ -10,6 +10,8 @@
 		D0AAC973299C308700C73035 /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AAC96F299C308700C73035 /* Transaction+CoreDataClass.swift */; };
 		D0AAC975299C308700C73035 /* AccountHolder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AAC971299C308700C73035 /* AccountHolder+CoreDataClass.swift */; };
 		D0AAC978299C34B600C73035 /* CSV_Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AAC977299C34B600C73035 /* CSV_Parser.swift */; };
+		D0B9EFFF29E5878C0021C39D /* Groups+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9EFFD29E5878C0021C39D /* Groups+CoreDataClass.swift */; };
+		D0B9F00229E588180021C39D /* GroupManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9F00129E588180021C39D /* GroupManagement.swift */; };
 		D0CDD4DC299AE72E006F9F70 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CDD4DA299AE72E006F9F70 /* Persistence.swift */; };
 		D0CDD4E3299AE9DB006F9F70 /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CDD4DF299AE9DB006F9F70 /* Account+CoreDataProperties.swift */; };
 		D0CDD4E5299AE9DB006F9F70 /* File+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CDD4E1299AE9DB006F9F70 /* File+CoreDataProperties.swift */; };
@@ -24,6 +26,8 @@
 		D0AAC96F299C308700C73035 /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D0AAC971299C308700C73035 /* AccountHolder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountHolder+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D0AAC977299C34B600C73035 /* CSV_Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSV_Parser.swift; sourceTree = "<group>"; };
+		D0B9EFFD29E5878C0021C39D /* Groups+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Groups+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D0B9F00129E588180021C39D /* GroupManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagement.swift; sourceTree = "<group>"; };
 		D0CDD4DA299AE72E006F9F70 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D0CDD4DF299AE9DB006F9F70 /* Account+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D0CDD4E1299AE9DB006F9F70 /* File+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				D0F5F077299A309C00D01E65 /* DataManagement.swift */,
+				D0B9F00129E588180021C39D /* GroupManagement.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 		D0F5F076299A307A00D01E65 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D0B9EFFD29E5878C0021C39D /* Groups+CoreDataClass.swift */,
 				D0AAC96F299C308700C73035 /* Transaction+CoreDataClass.swift */,
 				D0AAC971299C308700C73035 /* AccountHolder+CoreDataClass.swift */,
 				D0CDD4DF299AE9DB006F9F70 /* Account+CoreDataProperties.swift */,
@@ -181,7 +187,9 @@
 				D0F5F078299A309C00D01E65 /* DataManagement.swift in Sources */,
 				D0CDD4E8299AFADD006F9F70 /* Budget.xcdatamodeld in Sources */,
 				D0AAC978299C34B600C73035 /* CSV_Parser.swift in Sources */,
+				D0B9EFFF29E5878C0021C39D /* Groups+CoreDataClass.swift in Sources */,
 				D0AAC973299C308700C73035 /* Transaction+CoreDataClass.swift in Sources */,
+				D0B9F00229E588180021C39D /* GroupManagement.swift in Sources */,
 				D0CDD4E5299AE9DB006F9F70 /* File+CoreDataProperties.swift in Sources */,
 				D0F5F067299A2C5A00D01E65 /* BudgetApp.swift in Sources */,
 				D0CDD4DC299AE72E006F9F70 /* Persistence.swift in Sources */,
