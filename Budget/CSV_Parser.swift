@@ -120,6 +120,7 @@ func loadCSV(knownCSVFiles: FetchedResults<File>, knownAccounts: FetchedResults<
         t.paidOut = Int64(transaction.paidOut)
         t.transactionType = transaction.transactionType
         t.transactionDescription = transaction.description
+        t.associatedAccount = csvAccount
         newTransactions.append(t)
     }
 
@@ -203,8 +204,6 @@ func loadCSVFileContents(csvFileURL: String) -> CSVData?{
     let availableBalance: Int? = Int(availableBalanceStr)
     
     
-    
-    
     guard let accountBalance = accountBalance else {
         print("Couldn't convert account balance to int: Was reading location \(keyDataLocations.accountBalanceLocation) as specified by format \(formatName) as holding the value  \"\(csvContentList[keyDataLocations.accountBalanceLocation])\"")
         return nil
@@ -227,13 +226,9 @@ func loadCSVFileContents(csvFileURL: String) -> CSVData?{
     var transactions: [TransactionRecord] = []
     for currentTransactionNumber in 1..<totalNoTransactions {
         
-        let dateFormatter: DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
-        dateFormatter.timeZone = .gmt
-        
         let currentOffset: Int = keyDataLocations.noColumnsPerTransaction*currentTransactionNumber
         
-        let transactionDate:Date = dateFormatter.date(from: csvContentList[keyDataLocations.transactionDateLocation + currentOffset]) ?? Date()
+        let transactionDate:Date = Utils.dateFormatter.date(from: csvContentList[keyDataLocations.transactionDateLocation + currentOffset]) ?? Date()
         
         var paidOutStr: String = csvContentList[keyDataLocations.transactionPaidOutLocation + currentOffset]
         paidOutStr.replace(".", with: "")
@@ -302,3 +297,13 @@ func getCSVFormat(format: StatementFileDataFormats = .format_1) -> (CSVDataLocat
     }
 }
 
+enum Utils {
+    
+    public static var  dateFormatter: DateFormatter = {
+        let df: DateFormatter = DateFormatter()
+        df.dateFormat = "dd MMM yyyy"
+        df.timeZone = .gmt
+        return df
+    }()
+    
+}

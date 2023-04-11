@@ -24,13 +24,21 @@ struct DataManagement: View {
     
     @Namespace var animation
 
+    
+    
+    
+    
     var windowWidth: CGFloat { getRect().width / 1.75 }
     var windowHeight: CGFloat { getRect().height - 130 }
     
     
     var body: some View {
         
-        
+        let accountArr = accounts.map({ account in
+            account.accountName})
+        let colours = dictionaryComprehension(array: accountArr) { (element) -> (key: String, value: Color)? in
+                return (key: element, value: getRandomColour())
+            }
         
         HStack(spacing: 0){
             
@@ -68,6 +76,7 @@ struct DataManagement: View {
                                     fatalError("loadDummyCSV:Unresolved error \(nsError), \(nsError.userInfo)")
                                 }
                             }
+
                         }.frame(maxWidth: .infinity)
                         Table(files){
                             TableColumn("File Name",value: \.fileName)
@@ -79,7 +88,7 @@ struct DataManagement: View {
                                         \.self){
                                 account in
                                 Toggle(account.accountName, isOn: .constant(true))
-                                    .toggleStyle(.checkbox)
+                                    .toggleStyle(.checkbox).foregroundStyle(colours[account.accountName]!)
                                 
                             }
                             
@@ -90,15 +99,14 @@ struct DataManagement: View {
                         
                         Chart() {
                             
-                            ForEach(accounts){ account in
+                        
+                            ForEach(transactions){ transaction in
                                 
-                                ForEach(account.transactions){ transaction in
                                     PointMark(
                                         x: .value("Date", transaction.date),
                                         y: .value("Balance", transaction.balance/100)
-                                    )
+                                    ).foregroundStyle(colours[transaction.associatedAccount.accountName]!)
                                     
-                                }.foregroundStyle(getRandomColour())
                             }
                         }.frame(maxHeight: 200)
                         Spacer()
@@ -148,4 +156,15 @@ func getRandomColour() -> Color{
         red: .random(in: 0...1),
         green: .random(in: 0...1),
         blue: .random(in: 0...1))
+}
+
+// Code from https://stackoverflow.com/questions/32022162/swift-dictionary-comprehension
+func dictionaryComprehension<T,K,V>(array: [T], map: (T) -> (key: K, value: V)?) -> [K: V] {
+    var dict = [K: V]()
+    for element in array {
+        if let (key, value) = map(element) {
+            dict[key] = value
+        }
+    }
+    return dict
 }
